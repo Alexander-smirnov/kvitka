@@ -1,0 +1,7 @@
+.git
+wp-config.php
+.htaccess
+.idea
+node_modules
+/wp-content/themes/kvitka/node_modules
+/wp-content/themes/kvitka/gulpfile.js
