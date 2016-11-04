@@ -166,3 +166,6 @@ add_action( 'after_setup_theme', 'woocommerce_support' );
 function woocommerce_support() {
 	add_theme_support( 'woocommerce' );
 }
+if( function_exists('acf_add_options_page') ) {
+	acf_add_options_page();
+}

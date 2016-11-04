@@ -265,13 +265,58 @@ nav .input-group-btn,
 nav .form-control {
   display: inline;
 }
-
-
+header#masthead {
+  position: fixed;
+  background: white;
+  margin: 0 auto;
+  width: 100%;
+  z-index: 2;
+}
+.site-navigation {
+  @media (min-width: 1024px) and (max-width: 1999px)  {
+    padding-left: 20px;
+  }
+  .navbar {
+    background: none;
+    border: none;
+    margin: 0 auto;
+  }
+}
+.logo {
+  max-width: 40px;
+  padding-top: 5px;
+}
 #main-menu {
+  float: none;
+  text-align: center;
   .menu-item {
+    display: inline-block;
+    float: none;
     a {
-      padding: 15px 5px;
-      color: red;
+      padding: 15px;
+      color: #337ab7;
+      &:hover {
+        background-color: lightgray;
+      }
     }
   }
+}
+.phones {
+  list-style-type: none;
+  padding: 0;
+  margin: 15px 0 0;
+  .phone {
+    text-align: right;
+    img {
+      max-width: 32px;
+    }
+    a {
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
+.main-content {
+  padding-top: 65px;
 }

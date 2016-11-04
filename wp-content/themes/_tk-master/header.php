@@ -37,8 +37,8 @@
 					</a>
 				<?php } // end if ( ! empty( $header_image ) ) ?>
 				<div class="row">
-					<div class="col-md-2"><img src="<?php the_field('logo', 'option') ?>" alt="Logo"></div>
-					<div class="col-md-6">
+					<div class="col-md-1"><a href="/"><img src="<?php the_field('logo', 'option') ?>" class="logo" alt="Logo"></a></div>
+					<div class="col-md-9">
 						<nav class="site-navigation">
 							<?php // substitute the class "container-fluid" below if you want a wider content area ?>
 								<div class="site-navigation-inner">
@@ -74,7 +74,25 @@
 								</div>
 						</nav><!-- .site-navigation -->
 					</div>
-					<div class="col-md-4"></div>
+					<div class="col-md-2">
+						<?php
+							if ( get_field('phones', 'option') ) { ?>
+								<ul class="phones">
+									 <?php
+									 $all_phones = get_field('phones', 'option');
+									 foreach ( $all_phones as $phone ) {
+										 $vowels = array('(', ')', ' ', '-');
+										 $formated_phone = str_replace($vowels, '', $phone["phone_number"]);
+										 ?>
+										 <li class="phone">
+											 <img src="<?php echo $phone["operator_logo"] ?>" alt="operator_logo">
+											 <a href="tel:<?php echo $formated_phone ?>"><?php echo $phone["phone_number"]?></a>
+										 </li>
+									 <?php } ?>
+								</ul>
+							<?php }
+						?>
+					</div>
 				</div>
 
 			</div>
