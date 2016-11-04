@@ -110,6 +110,11 @@ function _tk_scripts() {
 	// load _tk styles
 	wp_enqueue_style( '_tk-style', get_stylesheet_uri() );
 
+	//flexslider style
+	wp_enqueue_style( 'flexslider-styles', get_stylesheet_directory_uri(). '/includes/js/flexslider/flexslider.css' );
+	wp_enqueue_script( 'flexslider-scripts', THEME_DIR_URI . '/includes/js/flexslider/jquery.flexslider.js', array('jquery') );
+	wp_enqueue_script( 'custom-js', THEME_DIR_URI . '/includes/js/custom.js', array('jquery') );
+
 	// load bootstrap js
 	wp_enqueue_script('_tk-bootstrapjs', THEME_DIR_URI . '/includes/resources/bootstrap/js/bootstrap.min.js', array('jquery') );
 
