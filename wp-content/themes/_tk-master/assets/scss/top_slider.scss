@@ -44,9 +44,11 @@
     }
   }
 }
-.how-we-work {
-  .counter, .content p,
-  .section-title, .principle-title,
+.how-we-work,
+.how-to-order {
+  .counter,
+  .content p,
+  .principle-title,
   .principle-description {
     text-align: center;
   }
@@ -56,12 +58,109 @@
   .content p {
     font-size: 18px;
   }
-  .section-title {
-    font-size: 36px;
-    font-weight: 700;
-  }
   .principle-title {
     font-weight: 700;
+    font-size: 18px;
   }
-
+  .principle-wrapper {
+    &:after {
+      content: '\f061';
+      font-family: FontAwesome;
+      font-weight: normal;
+      font-style: normal;
+      text-decoration:none;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    &:last-child {
+      &:after {
+        content: '';
+      }
+    }
+  }
+}
+.bouquets-wrapper {
+  background-color: lightgrey;
+}
+.section-title {
+  font-size: 36px;
+  font-weight: 700;
+  margin: 55px auto;
+  text-align: center;
+}
+.flex-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  .bouquet {
+    display: flex;
+    margin-bottom: 50px;
+    img {
+      margin: 0 auto;
+    }
+    .bouquet-title {
+      text-align: center;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .about-bouquet {
+      background-color: #FFF;
+      max-width: 300px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+    .about-wrapper {
+      padding-bottom: 10px;
+      text-align: center;
+      .fa-asterisk {
+        padding-left: 20px;
+      }
+      .send {
+        margin: 20px auto;
+        background-color: #568aa9;
+        color: wheat;
+      }
+    }
+  }
+}
+.create-own-bouquet {
+  text-align: center;
+  .own-bouquet {
+    background-color: #568aa9;
+    color: wheat;
+  }
+}
+.partners-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  position: relative;
+  .partners {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 50px;
+    margin-bottom: 55px;
+    img {
+      max-width: 300px;
+      height: auto;
+      margin: 0 auto;
+    }
+  }
+  .partners-title {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font: bold 24px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+}
+.how-to-return {
+  background-color: lightgrey;
+  .section-title {
+    margin-bottom: 40px;
+  }
 }

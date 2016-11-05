@@ -174,3 +174,107 @@ function woocommerce_support() {
 if( function_exists('acf_add_options_page') ) {
 	acf_add_options_page();
 }
+
+/**
+ * Create custom post type
+ */
+add_action( 'init', 'create_post_type' );
+function create_post_type() {
+	register_post_type( 'Bouquets',
+		array(
+			'labels'              => array(
+				'name'               => _x( 'Bouquets', '_tk' ),
+				'singular_name'      => _x( 'Bouquets', '_tk' ),
+				'add_new'            => _x( 'Add new Bouquet', '_tk' ),
+				'add_new_item'       => _x( 'Add new item', '_tk' ),
+				'edit_item'          => _x( 'Edit Bouquets', '_tk' ),
+				'new_item'           => _x( 'New item', '_tk' ),
+				'view_item'          => _x( 'View Bouquets', '_tk' ),
+				'search_items'       => _x( 'Search', '_tk' ),
+				'not_found'          => _x( 'Sorry, not found', '_tk' ),
+				'not_found_in_trash' => _x( 'Not found in trash', '_tk' ),
+			),
+			'description'         => 'Bouquets',
+			'public'              => true,
+			'publicly_queryable'  => true,
+			'exclude_from_search' => false,
+			'show_ui'             => true,
+			'show_in_menu'        => true,
+			'menu_position'       => 6,
+			'menu_icon'           => 'dashicons-cart',
+			'hierarchical'        => false,
+			'supports'            => array( 'title', 'editor', 'thumbnail', 'custom-fields' ),
+			'has_archive'         => true,
+			'query_var'           => true,
+			'capability_type'     => 'post',
+			'show_in_nav_menus'   => null,
+
+		)
+	);
+
+	register_post_type( 'Testimonials',
+		array(
+			'labels'              => array(
+				'name'               => _x( 'Testimonials', '_tk' ),
+				'singular_name'      => _x( 'Testimonials', '_tk' ),
+				'add_new'            => _x( 'Add new Testimonial', '_tk' ),
+				'add_new_item'       => _x( 'Add new item', '_tk' ),
+				'edit_item'          => _x( 'Edit Testimonials', '_tk' ),
+				'new_item'           => _x( 'New item', '_tk' ),
+				'view_item'          => _x( 'View Testimonials', '_tk' ),
+				'search_items'       => _x( 'Search', '_tk' ),
+				'not_found'          => _x( 'Sorry, not found', '_tk' ),
+				'not_found_in_trash' => _x( 'Not found in trash', '_tk' ),
+			),
+			'description'         => 'Testimonials',
+			'public'              => true,
+			'publicly_queryable'  => true,
+			'exclude_from_search' => false,
+			'show_ui'             => true,
+			'show_in_menu'        => true,
+			'menu_position'       => 6,
+			'menu_icon'           => 'dashicons-megaphone',
+			'hierarchical'        => false,
+			'supports'            => array( 'title', 'editor', 'thumbnail', 'custom-fields' ),
+			'has_archive'         => true,
+			'query_var'           => true,
+			'capability_type'     => 'post',
+			'show_in_nav_menus'   => null,
+
+		)
+	);
+
+	register_post_type( 'Happy',
+		array(
+			'labels'              => array(
+				'name'               => _x( 'Happy mom', '_tk' ),
+				'singular_name'      => _x( 'Happy mom', '_tk' ),
+				'add_new'            => _x( 'Add new Happy mom', '_tk' ),
+				'add_new_item'       => _x( 'Add new item', '_tk' ),
+				'edit_item'          => _x( 'Edit Happy moms', '_tk' ),
+				'new_item'           => _x( 'New item', '_tk' ),
+				'view_item'          => _x( 'View Happy moms', '_tk' ),
+				'search_items'       => _x( 'Search', '_tk' ),
+				'not_found'          => _x( 'Sorry, not found', '_tk' ),
+				'not_found_in_trash' => _x( 'Not found in trash', '_tk' ),
+			),
+			'description'         => 'Happy mom',
+			'public'              => true,
+			'publicly_queryable'  => true,
+			'exclude_from_search' => false,
+			'show_ui'             => true,
+			'show_in_menu'        => true,
+			'menu_position'       => 6,
+			'menu_icon'           => 'dashicons-heart',
+			'hierarchical'        => false,
+			'supports'            => array( 'title', 'editor', 'thumbnail', 'custom-fields' ),
+			'has_archive'         => true,
+			'query_var'           => true,
+			'capability_type'     => 'post',
+			'show_in_nav_menus'   => null,
+
+		)
+	);
+
+
+}
