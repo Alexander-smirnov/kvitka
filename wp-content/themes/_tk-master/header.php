@@ -14,9 +14,10 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 	<title><?php wp_title( '|', true, 'right' ); ?></title>
-
+	<link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/flower.ico" type="image/x-icon">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+
 
 	<?php wp_head(); ?>
 </head>
@@ -37,8 +38,15 @@
 					</a>
 				<?php } // end if ( ! empty( $header_image ) ) ?>
 				<div class="row">
-					<div class="col-md-1"><a href="/"><img src="<?php the_field('logo', 'option') ?>" class="logo" alt="Logo"></a></div>
-					<div class="col-md-9">
+					<div class="col-md-2">
+					<?php $header_image = get_field('logo', 'option');
+					if ($header_image) { ?>
+						<a href="<?php echo get_home_url(); ?>"><img src="<?php the_field('logo', 'option') ?>" class="logo" alt="Logo"></a>
+					<?php } else { ?>
+					<h1 class="site-title"><a href="<?php echo get_home_url(); ?>"><?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?></a></h1>
+					<?php }?>
+					</div>
+					<div class="col-md-8">
 						<nav class="site-navigation">
 							<?php // substitute the class "container-fluid" below if you want a wider content area ?>
 								<div class="site-navigation-inner">
@@ -85,7 +93,7 @@
 										 $formated_phone = str_replace($vowels, '', $phone["phone_number"]);
 										 ?>
 										 <li class="phone">
-											 <img src="<?php echo $phone["operator_logo"] ?>" alt="operator_logo">
+											 <i class="fa fa-phone" aria-hidden="true"></i>
 											 <a href="tel:<?php echo $formated_phone ?>"><?php echo $phone["phone_number"]?></a>
 										 </li>
 									 <?php } ?>

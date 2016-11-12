@@ -278,3 +278,6 @@ function create_post_type() {
 
 
 }
+
+add_image_size( 'happy', 300, 400, array( 'center', 'top' ) );
+add_image_size( 'sale', 250, 242, array( 'center', 'top' ) );
