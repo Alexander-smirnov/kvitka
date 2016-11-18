@@ -423,7 +423,7 @@ get_header();
     </section>
 
     <!-- Modal -->
-    <div id="order" class="modal fade" role="dialog">
+    <div id="order" class="modal fade order" role="dialog">
         <div class="modal-dialog">
 
             <!-- Modal content-->
@@ -469,12 +469,25 @@ get_header();
                             </ul>
                         </div>
                         <div class="order-form-wrapper">
-                            <?php
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a data-toggle="tab" href="#home">Скорочена форма</a></li>
+                                <li><a data-toggle="tab" href="#menu1">Повна форма</a></li>
+                            </ul>
 
-                            $form_id = get_field('cart_form_id');
-                            gravity_form($form_id, false, false, false, null, $ajax = true, $echo = true);
-
-                            ?>
+                            <div class="tab-content">
+                                <div id="home" class="tab-pane fade in active">
+                                    <?php
+                                    $form_id = get_field('own_form');
+                                    gravity_form(6, false, false, false, null, $ajax = true, $echo = true);
+                                    ?>
+                                </div>
+                                <div id="menu1" class="tab-pane fade">
+                                    <?php
+                                    $form_id = get_field('cart_form_id');
+                                    gravity_form($form_id, false, false, false, null, $ajax = true, $echo = true);
+                                    ?>
+                                </div>
+                            </div>
 
                         </div>
                     </div>
@@ -484,5 +497,29 @@ get_header();
         </div>
     </div>
 
+
+    <div id="create-own-bouquet" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><?php the_field('form_title'); ?></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="order-form-wrapper">
+                            <?php
+                            $form_id = get_field('own_form');
+                            gravity_form($form_id, false, false, false, null, $ajax = true, $echo = true);
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
 <?php get_footer(); ?>

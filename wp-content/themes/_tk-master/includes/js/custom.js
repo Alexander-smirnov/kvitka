@@ -1,23 +1,46 @@
 jQuery(document).ready(function ($) {
+
+    //init sliders
     $('.flexslider').flexslider({
         animation: "slide",
         controlNav: false
     });
     $('.testimonials-slider').flexslider({
         animation: "slide",
-        controlNav: true,
+        controlNav: true
     });
+    var width = $(window).width();
+    var iw, mi, im;
+
+    if ( width > 540 ) {
+        iw = 300;
+        mi = 1;
+        im = 10;
+    }
+    if ( width > 640 ) {
+        iw = 225;
+        mi = 1;
+        im = 5;
+    }
+    if (width > 900) {
+        iw = 300;
+        mi = 3;
+        im = 5;
+    }
     $('.happy-slider').flexslider({
         animation: "slide",
         animationLoop: true,
-        itemWidth: 300,
-        itemMargin: 5,
+        itemWidth: iw,
+        itemMargin: im,
         minItems: 1,
-        maxItems: 3,
+        maxItems: mi,
         controlNav: true,
         move: 1
     });
+    //end sliders
 
+
+    //set timer to end action
     var deadline = $('.sale-slogan').attr('data-end');
     initializeClock('clockdiv', deadline);
 
@@ -49,6 +72,8 @@ jQuery(document).ready(function ($) {
 
     }
 
+
+    //initialize actions timer
     function initializeClock(id, endtime){
         var clock = document.getElementById(id);
         var timeinterval = setInterval(function(){
@@ -79,6 +104,7 @@ jQuery(document).ready(function ($) {
         $('.for-sale').remove();
     }
 
+    //cart modal
     $(document).on( 'click', '.send', function() {
         var $parrent = $(this).closest('.about-bouquet');
         var title = $parrent.find('.bouquet-title').text();
@@ -87,9 +113,7 @@ jQuery(document).ready(function ($) {
         var price = $parrent.find('.price').text();
         var counter = $parrent.find('.counter').text();
         var image = $parrent.find('.wp-post-image').attr('src');
-
         var $order = $('#order');
-
         $order.find('.qty').text(counter);
         $order.find('.price').text(price);
         $order.find('.length').text(length);
@@ -99,13 +123,45 @@ jQuery(document).ready(function ($) {
         $order.find('.stotal').text(price);
         $order.find('.sshipping').text('0 грн.');
         $order.find('.sfull-total').text(price);
-
+        $order.find('.prize input').val('-');
+        $order.find('.bouquet-name input').val(title).text(title);
         $order.modal("show");
     });
 
+    $(document).on( 'click', '.actions-bouquet', function() {
+        var $parrent = $(this).closest('.for-sale').find('.bouquet');
+        var title = $parrent.find('.bouquet-title').text();
+        var description = $parrent.find('.bouquet-title').attr('data-desc');
+        var length = $parrent.find('.length').text();
+        var price = $parrent.find('.price').text();
+        var counter = $parrent.find('.counter').text();
+        var image = $parrent.find('.wp-post-image').attr('src');
+        var $order = $('#order');
+        $order.find('.qty').text(counter);
+        $order.find('.price').text(price);
+        $order.find('.length').text(length);
+        $order.find('.order-image').attr('src', image);
+        $order.find('.bouquet-title').text(title);
+        $order.find('.bouquet-name input').val(title);
+        $order.find('.prize input').val('+');
+        $order.find('.bouquet-description').html(description);
+        $order.find('.stotal').text(price);
+        $order.find('.sshipping').text('0 грн.');
+        $order.find('.sfull-total').text(price);
+        $order.find('.characteristics').after('<p class="prize"></p>');
+        $order.find('.prize input').val('+');
+        $order.find('.bouquet-name input').val(title).text(title);
+        $order.modal("show");
+    });
 
+    $(document).on( 'click', '.own-bouquet', function() {
+        $('#create-own-bouquet').modal("show");
+    });
+    $('.gf_repeater_add').append(' додати ще квітку');
+    $('.gf_repeater_remove').append(' прибрати попередню квітку');
 
-    $('a[href*="#"]:not([href="#"])').click(function() {
+    //slow scroll
+    $('#main-menu a[href*="#"]:not([href="#"])').click(function() {
         if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
             var target = $(this.hash);
             target = target.length ? target : $('[name=' + this.hash.slice(1) +']');

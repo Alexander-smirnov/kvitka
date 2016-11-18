@@ -130,6 +130,7 @@ function _tk_scripts() {
 	if ( is_singular() && wp_attachment_is_image() ) {
 		wp_enqueue_script( '_tk-keyboard-image-navigation', THEME_DIR_URI . '/includes/js/keyboard-image-navigation.js', array( 'jquery' ), '20120202' );
 	}
+//	wp_enqueue_script( 'asdasdasdasd', 'http://bootstrapdocs.com/v1.3.0/js/bootstrap-tabs.js', array('jquery') );
 
 }
 add_action( 'wp_enqueue_scripts', '_tk_scripts' );
@@ -281,3 +282,34 @@ function create_post_type() {
 
 add_image_size( 'happy', 300, 400, array( 'center', 'top' ) );
 add_image_size( 'sale', 250, 242, array( 'center', 'top' ) );
+
+
+function admin_ajax() {
+	wp_localize_script( 'jquery', 'vars', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+}
+add_action( 'wp_enqueue_scripts', 'admin_ajax' );
+
+
+
+
+function send_custom_mail() {
+	$from_name = 'Букет для мами';
+	$from_email = 'allflowers.com.ua@gmail.com';
+	$admin_email = 'sandrik85@gmail.com';
+	$message = '
+                <html>
+                    <head>
+                        <title>Вопрос с сайта</title>
+                    </head>
+                    <body>
+                    	<p>asdasdasdasd</p>
+                    </body>
+                </html>';
+	$headers  = 'MIME-Version: 1.0' . "\r\n";
+	$headers .= 'Content-type: text/html; charset=UTF-8; '."\r\n";
+	$headers .= 'From: =?utf-8?b?' . base64_encode($from_name) . "?= <$from_email>\r\n";
+	wp_mail($admin_email, 'Вопрос с сайта', $message, $headers );
+	die();
+}
+add_action( 'wp_ajax_send_custom_mail', 'send_custom_mail' );
+add_action( 'wp_ajax_nopriv_send_custom_mail', 'send_custom_mail' );
